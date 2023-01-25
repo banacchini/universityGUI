@@ -1,0 +1,8 @@
+Wymagania:
+- dobra struktura kodu – czytelność, komentarze, brak powielenia, podział na funkcjonalne części, minimalizacja użytych zmiennych, nazewnictwo zmiennych i metod.
+- wykorzystanie wzorców projektowych,
+- działanie na strumieniach – np. serializacja, ale również i jakieś działanie na pliku tekstowym – np. poprzez parsowanie stringów z pliku, wczytanie danych symulowanych.
+- obsługa wyjątków – przygotowanie własnego wyjątku,
+- wykorzystanie wybranej kolekcji,
+- implementacja kodu testowego do wybranych metod (Junit test),
+- GUI + rozwarstwienie
