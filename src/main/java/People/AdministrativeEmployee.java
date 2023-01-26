@@ -9,10 +9,11 @@ public class AdministrativeEmployee extends Employee {
 //    Constructor
 
     public AdministrativeEmployee(String name, String surname, String PESEL, int age, String sex, int nr, String position, int baseWage, float overtime) {
-        super(name, surname, PESEL, age, sex, position, baseWage, nr);
+        super(name, surname, PESEL, age, sex, nr, position, baseWage);
         this.overtime = overtime;
         this.setRole("Pracownik Administracyjny");
     }
+
 
 //
 
