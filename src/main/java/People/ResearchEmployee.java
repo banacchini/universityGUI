@@ -7,11 +7,13 @@ public class ResearchEmployee extends Employee {
 
 //    Constructor
 
-    public ResearchEmployee(String name, String surname, String PESEL, int age, String sex, String position, int baseWage, int numberOfPublications) {
-        super(name, surname, PESEL, age, sex, position, baseWage);
+    public ResearchEmployee(String name, String surname, String PESEL, int age, String sex, int nr, String position, int baseWage, int numberOfPublications) {
+        super(name, surname, PESEL, age, sex, nr, position, baseWage);
         this.numberOfPublications = numberOfPublications;
         this.setRole("Pracownik Naukowy");
     }
+
+
 
 //
 

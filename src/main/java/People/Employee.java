@@ -8,8 +8,8 @@ public abstract class Employee extends Person {
 
 //    Constructor
 
-    public Employee(String name, String surname, String PESEL, int age, String sex, String position, int baseWage) {
-        super(name, surname, PESEL, age, sex);
+    public Employee(String name, String surname, String PESEL, int age, String sex, int nr, String position, int baseWage) {
+        super(name, surname, PESEL, age, sex, nr);
         this.position = position;
         this.baseWage = baseWage;
     }

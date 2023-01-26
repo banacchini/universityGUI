@@ -5,14 +5,8 @@ import java.util.ArrayList;
 public class WeekendStudent extends Student {
     private int tuition;
 
-    public WeekendStudent(String name, String surname, String PESEL, int age, String sex, ArrayList<Course> coursesList, int index, int semester, int tuition) {
-        super(name, surname, PESEL, age, sex, coursesList, index, semester);
-        this.tuition = tuition;
-        this.setRole("Student Zaoczny");
-    }
-
-    public WeekendStudent(String name, String surname, String PESEL, int age, String sex, int index, int semester, int tuition) {
-        super(name, surname, PESEL, age, sex, index, semester);
+    public WeekendStudent(String name, String surname, String PESEL, int age, String sex, int nr, ArrayList<Course> coursesList, int index, int semester, int tuition) {
+        super(name, surname, PESEL, age, sex, nr, coursesList, index, semester);
         this.tuition = tuition;
     }
 

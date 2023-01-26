@@ -9,18 +9,13 @@ public abstract class Student extends Person{
 
 //    Constructors, 1 for an empty courseList and 1 for an already existing list
 
-    public Student(String name, String surname, String PESEL, int age, String sex, ArrayList<Course> coursesList, int index, int semester) {
-        super(name, surname, PESEL, age, sex);
+    public Student(String name, String surname, String PESEL, int age, String sex, int nr, ArrayList<Course> coursesList, int index, int semester) {
+        super(name, surname, PESEL, age, sex, nr);
         this.coursesList = coursesList;
         this.index = index;
         this.semester = semester;
     }
 
-    public Student(String name, String surname, String PESEL, int age, String sex, int index, int semester) {
-        super(name, surname, PESEL, age, sex);
-        this.index = index;
-        this.semester = semester;
-    }
 
 //  ______________________________________________________________________________
 

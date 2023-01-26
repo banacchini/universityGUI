@@ -13,17 +13,29 @@ public abstract class Person implements Serializable {
     private String sex;
     private String role;
 
+    private int nr;
+
 //      Constructor
-    public Person(String name, String surname, String PESEL, int age, String sex) {
+    public Person(String name, String surname, String PESEL, int age, String sex, int nr) {
         this.name = name;
         this.surname = surname;
         this.PESEL = PESEL;
         this.age = age;
         this.sex = sex;
+        this.nr = nr;
     }
 //    ______________________________________________________________________________
 
 //    Getters and setters
+
+    public int getNr() {
+        return nr;
+    }
+
+    public void setNr(int nr) {
+        this.nr = nr;
+    }
+
     public String getName() {
         return name;
     }
