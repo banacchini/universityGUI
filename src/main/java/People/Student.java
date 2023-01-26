@@ -16,8 +16,13 @@ public abstract class Student extends Person{
         this.semester = semester;
     }
 
+    public Student(String name, String surname, String PESEL, int age, String sex, int nr, int index, int semester) {
+        super(name, surname, PESEL, age, sex, nr);
+        this.index = index;
+        this.semester = semester;
+    }
 
-//  ______________________________________________________________________________
+    //  ______________________________________________________________________________
 
 // Getters and setters
 
@@ -57,14 +62,20 @@ public abstract class Student extends Person{
 //  ______________________________________________________________________________
 
 //  printing methods
-    public String printCourses(){
+    public String printCourses() {
         String courses = "[";
 
-        for (int i = 0; i<coursesList.size()-1; i++){
+
+        for (int i = 0; i < coursesList.size() - 1; i++) {
             courses += "[" + coursesList.get(i).toString() + "], ";
         }
 
-        return courses + "[" + coursesList.get(coursesList.size()-1).toString() + "]]";
+//        this method would throw an error if coursesList was empty so we have to take that into the consideration
+        if (coursesList.size() > 0) {
+            return courses + "[" + coursesList.get(coursesList.size() - 1).toString() + "]]";
+        } else {
+            return "[]";
+        }
     }
 
     public String toString(){

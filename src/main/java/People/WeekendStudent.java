@@ -10,6 +10,12 @@ public class WeekendStudent extends Student {
         this.tuition = tuition;
     }
 
+    public WeekendStudent(String name, String surname, String PESEL, int age, String sex, int nr, int index, int semester, int tuition) {
+        super(name, surname, PESEL, age, sex, nr, index, semester);
+        this.tuition = tuition;
+    }
+
+
     public int getTuition() {
         return tuition;
     }

@@ -10,6 +10,7 @@ public class Course implements Serializable {
     private int ECTS;
     private float grade;
 
+
 //    Constructor
 
     public Course(String name, String teacher, int ECTS, float grade) {

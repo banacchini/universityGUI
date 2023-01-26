@@ -13,7 +13,7 @@ public abstract class Person implements Serializable {
     private String sex;
     private String role;
 
-    private int nr;
+    private Integer nr;
 
 //      Constructor
     public Person(String name, String surname, String PESEL, int age, String sex, int nr) {
