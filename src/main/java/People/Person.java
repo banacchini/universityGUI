@@ -83,7 +83,7 @@ public abstract class Person implements Serializable {
 
 //    toString
     public String toString() {
-        return "" + surname + " " + name + ", " + PESEL + ", " + age + ", " + age;
+        return "" + surname + " " + name + ", PESEL: " + PESEL + ", wiek: " + age + ", plec: " + sex;
     }
 //    ______________________________________________________________________________
 
@@ -106,4 +106,8 @@ public abstract class Person implements Serializable {
 
 //    Employee methods
 
+    public abstract int getBaseWage();
+    public abstract int getNumberOfPublications();
+
+    public abstract float getOvertime();
 }

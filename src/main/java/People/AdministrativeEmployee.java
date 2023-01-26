@@ -1,5 +1,7 @@
 package People;
 
+import strategy.AdministrativeSalaryCalculator;
+
 import java.util.ArrayList;
 
 public class AdministrativeEmployee extends Employee {
@@ -12,6 +14,7 @@ public class AdministrativeEmployee extends Employee {
         super(name, surname, PESEL, age, sex, nr, position, baseWage);
         this.overtime = overtime;
         this.setRole("Pracownik Administracyjny");
+        this.setSalary(new AdministrativeSalaryCalculator().calculate(this));
     }
 
 
@@ -65,6 +68,11 @@ public class AdministrativeEmployee extends Employee {
     @Override
     public void setSemester(int semester) {
 
+    }
+
+    @Override
+    public int getNumberOfPublications() {
+        return 0;
     }
 //
 }

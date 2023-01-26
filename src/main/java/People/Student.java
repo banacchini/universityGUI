@@ -7,7 +7,7 @@ public abstract class Student extends Person{
     private int index;
     private int semester;
 
-//    Constructors, 1 for an empty courseList and 1 for an already existing list
+//    Konstruktory, jeden z utworzona wczesniej lista kursow, drugi tworzy pusta liste kursow i przypisuje ja studentowi
 
     public Student(String name, String surname, String PESEL, int age, String sex, int nr, ArrayList<Course> coursesList, int index, int semester) {
         super(name, surname, PESEL, age, sex, nr);
@@ -20,6 +20,7 @@ public abstract class Student extends Person{
         super(name, surname, PESEL, age, sex, nr);
         this.index = index;
         this.semester = semester;
+        this.coursesList = new ArrayList<Course>();
     }
 
     //  ______________________________________________________________________________
@@ -70,7 +71,7 @@ public abstract class Student extends Person{
             courses += "[" + coursesList.get(i).toString() + "], ";
         }
 
-//        this method would throw an error if coursesList was empty so we have to take that into the consideration
+//        ta metoda zwrocilaby blad gdyby w liscie nie bylo zadnego kursu, takze upewniamy sie ze jakis jest
         if (coursesList.size() > 0) {
             return courses + "[" + coursesList.get(coursesList.size() - 1).toString() + "]]";
         } else {
@@ -86,7 +87,22 @@ public abstract class Student extends Person{
 
 //    Override of abstract methods used in other classes
 
-//   ______________________________________________________________________________
+    @Override
+    public int getBaseWage() {
+        return 0;
+    }
+
+    @Override
+    public int getNumberOfPublications() {
+        return 0;
+    }
+
+    @Override
+    public float getOvertime() {
+        return 0;
+    }
+
+    //   ______________________________________________________________________________
 
 
 }

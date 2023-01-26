@@ -1,5 +1,8 @@
 package People;
 
+import strategy.CalculateSalary;
+import strategy.ResearchSalaryCalculator;
+
 import java.util.ArrayList;
 
 public class ResearchEmployee extends Employee {
@@ -11,6 +14,7 @@ public class ResearchEmployee extends Employee {
         super(name, surname, PESEL, age, sex, nr, position, baseWage);
         this.numberOfPublications = numberOfPublications;
         this.setRole("Pracownik Naukowy");
+        this.setSalary(new ResearchSalaryCalculator().calculate(this));
     }
 
 
@@ -21,6 +25,7 @@ public class ResearchEmployee extends Employee {
     public int getNumberOfPublications() {
         return numberOfPublications;
     }
+
 
     public void setNumberOfPublications(int numberOfPublications) {
         this.numberOfPublications = numberOfPublications;
@@ -65,6 +70,8 @@ public class ResearchEmployee extends Employee {
     public void setSemester(int semester) {
 
     }
+    @Override
+    public float getOvertime(){ return 0;}
 //
 
 }

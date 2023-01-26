@@ -27,5 +27,9 @@ public class DayStudent extends Student {
         this.attendance = attendance;
     }
 
+//    toString()
+    public String toString(){
+        return getRole() + ": " + super.toString() + ", frekwencja: " + attendance*100 + "%";
+    }
 
 }

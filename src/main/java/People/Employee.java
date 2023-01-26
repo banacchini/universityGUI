@@ -5,6 +5,7 @@ public abstract class Employee extends Person {
     private String position;
     private int baseWage;
 
+    private float salary;
 
 //    Constructor
 
@@ -33,11 +34,19 @@ public abstract class Employee extends Person {
         this.baseWage = baseWage;
     }
 
-//
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    //
 
 //    toString()
     public String toString(){
-        return "" + position + ", " + super.toString() + "stawka godzinowa: " + baseWage;
+        return "" + position + ", " + super.toString() + ", stawka godzinowa: " + baseWage + ", pensja: " + salary;
     }
 }
 //
