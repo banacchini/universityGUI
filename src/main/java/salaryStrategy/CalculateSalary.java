@@ -1,4 +1,4 @@
-package strategy;
+package salaryStrategy;
 
 import People.Person;
 

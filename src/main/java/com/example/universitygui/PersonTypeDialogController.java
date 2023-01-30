@@ -1,5 +1,6 @@
 package com.example.universitygui;
 
+import addingStrategy.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,37 +26,34 @@ public class PersonTypeDialogController implements Initializable {
 
     private boolean okClicked = false;
 
-    String [] types = {"Administrative Employee", "Research Employee", "Day Student", "Weekend Student"};
+    String [] types = {"Pracownik Administracyjny", "Pracownik Naukowy", "Student Dzienny", "Student Zaoczny"};
 
     @FXML
     void okBtnClicked(MouseEvent event) throws IOException {
-        if (typeChoice.getValue() != null){
-            Stage stage = new Stage();
-            Parent root;
+        PersonAdder creator;
 
-            if (typeChoice.getValue().equals("Administrative Employee")){
-//              Wybieramy scene odpowiedzialna za dodawanie Pracownika Administracyjnego
-                root = FXMLLoader.load(getClass().getResource("AdmEmployeeDataDialog.fxml"));
+        if (typeChoice.getValue() != null){
+
+//            Sprawdzamy jaki typ osoby zostal wybrany oraz przypisujemy odpowiednia klase odpowiedzialna za dodawanie
+            if (typeChoice.getValue().equals("Pracownik Administracyjny")){
+                creator = new AdministrativeEmployeeAdder();
             }
-            else if (typeChoice.getValue().equals("Research Employee")){
-                System.out.println("RE");
-//                Wybieramy scene odpowiedzialna za dodawanie Pracownika Naukowego
-                root = FXMLLoader.load(getClass().getResource("ResEmployeeDataDialog.fxml"));
+
+            else if (typeChoice.getValue().equals("Pracownik Naukowy")){
+                creator = new ResearchEmployeeAdder();
             }
-            else if(typeChoice.getValue().equals("Day Student")){
-                System.out.println("DS");
-//                Wybieramy scene odpowiedzialna za dodawanie Studenta Dziennego
-                root = FXMLLoader.load(getClass().getResource("DayStudentDataDialog.fxml"));
+
+            else if(typeChoice.getValue().equals("Student Dzienny")){
+                creator = new DayStudentAdder();
             }
+
             else{
-                System.out.println("Weekend Student");
-//                Wybieramy scene odpowiedzialna za dodawanie Studenta Zaocznego
-                root = FXMLLoader.load(getClass().getResource("WkndStudentDataDialog.fxml"));
+//                Student Zaoczny
+                creator = new WeekendStudentAdder();
             }
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
+
+            creator.add();
+
             closeWindow();
         }
 

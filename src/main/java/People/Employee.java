@@ -1,5 +1,7 @@
 package People;
 
+import java.util.ArrayList;
+
 public abstract class Employee extends Person {
 
     private String position;
@@ -48,5 +50,39 @@ public abstract class Employee extends Person {
     public String toString(){
         return "" + position + ", " + super.toString() + ", stawka godzinowa: " + baseWage + ", pensja: " + salary;
     }
+
+//    Override metod dotyczacych studentow
+    @Override
+    public ArrayList<Course> getCoursesList() {
+    return null;
+}
+
+    @Override
+    public void setCoursesList(ArrayList<Course> coursesList) {    }
+
+    @Override
+    public int getIndex() {
+        return 0;
+    }
+
+    @Override
+    public void setIndex(int index) {    }
+
+    @Override
+    public int getSemester() {
+        return 0;
+    }
+
+    @Override
+    public void setSemester(int semester) {    }
+
+    @Override
+    public float getGPA() { return 0; }
+
+    @Override
+    public void setGPA(float GPA){    }
+
+    @Override
+    public boolean checkScholarship(){ return false; }
 }
 //

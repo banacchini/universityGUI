@@ -1,0 +1,3 @@
+admin,admin
+dominik,superciezkiehaslo
+login,haslo

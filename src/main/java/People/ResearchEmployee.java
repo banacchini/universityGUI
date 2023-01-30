@@ -1,27 +1,29 @@
 package People;
 
-import strategy.CalculateSalary;
-import strategy.ResearchSalaryCalculator;
+import editStrategy.ResearchEmployeeEdit;
+import salaryStrategy.ResearchSalaryCalculator;
 
 import java.util.ArrayList;
 
 public class ResearchEmployee extends Employee {
     private int numberOfPublications;
 
-//    Constructor
+//    Konstruktor
 
     public ResearchEmployee(String name, String surname, String PESEL, int age, String sex, int nr, String position, int baseWage, int numberOfPublications) {
         super(name, surname, PESEL, age, sex, nr, position, baseWage);
         this.numberOfPublications = numberOfPublications;
+
         this.setRole("Pracownik Naukowy");
         this.setSalary(new ResearchSalaryCalculator().calculate(this));
+        this.setEditor(new ResearchEmployeeEdit());
     }
 
 
 
 //
 
-//    Getters and Setters
+//    Gettery i settery
     public int getNumberOfPublications() {
         return numberOfPublications;
     }
@@ -30,6 +32,8 @@ public class ResearchEmployee extends Employee {
     public void setNumberOfPublications(int numberOfPublications) {
         this.numberOfPublications = numberOfPublications;
     }
+
+
 //
 
 //    toString
@@ -38,36 +42,10 @@ public class ResearchEmployee extends Employee {
     }
 //
 
-// Override of abstract methods used in other classes
-
-
-    @Override
-    public ArrayList<Course> getCoursesList() {
-        return null;
-    }
+// Override abstrakcyjnych metod
 
     @Override
-    public void setCoursesList(ArrayList<Course> coursesList) {
-
-    }
-
-    @Override
-    public int getIndex() {
-        return 0;
-    }
-
-    @Override
-    public void setIndex(int index) {
-
-    }
-
-    @Override
-    public int getSemester() {
-        return 0;
-    }
-
-    @Override
-    public void setSemester(int semester) {
+    public void setOvertime(float overtime) {
 
     }
     @Override

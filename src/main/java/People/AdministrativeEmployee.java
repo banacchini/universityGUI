@@ -1,6 +1,7 @@
 package People;
 
-import strategy.AdministrativeSalaryCalculator;
+import editStrategy.AdministrativeEmployeeEdit;
+import salaryStrategy.AdministrativeSalaryCalculator;
 
 import java.util.ArrayList;
 
@@ -8,20 +9,22 @@ public class AdministrativeEmployee extends Employee {
 
     private float overtime;
 
-//    Constructor
+//    Konstruktor
 
     public AdministrativeEmployee(String name, String surname, String PESEL, int age, String sex, int nr, String position, int baseWage, float overtime) {
         super(name, surname, PESEL, age, sex, nr, position, baseWage);
         this.overtime = overtime;
+
         this.setRole("Pracownik Administracyjny");
         this.setSalary(new AdministrativeSalaryCalculator().calculate(this));
+        this.setEditor(new AdministrativeEmployeeEdit());
     }
 
 
 //
 
 
-//    Getters and Setters
+//    Gettery i settery
     public float getOvertime() {
         return overtime;
     }
@@ -37,7 +40,7 @@ public class AdministrativeEmployee extends Employee {
     }
 //
 
-//    Override of abstract methods used in other classes
+//    Override metod, z ktorych korzystam w innych klasach
 
 
     @Override
@@ -66,13 +69,13 @@ public class AdministrativeEmployee extends Employee {
     }
 
     @Override
-    public void setSemester(int semester) {
-
-    }
-
+    public void setSemester(int semester) {    }
     @Override
     public int getNumberOfPublications() {
         return 0;
     }
+
+    @Override
+    public void setNumberOfPublications(int numberOfPublications) {     }
 //
 }

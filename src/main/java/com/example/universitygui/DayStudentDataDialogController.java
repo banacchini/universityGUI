@@ -2,6 +2,7 @@ package com.example.universitygui;
 
 import People.AdministrativeEmployee;
 import People.DayStudent;
+import fileHandlingMethods.Serialization;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import myException.AttendenceOverOneException;
 
 import java.io.IOException;
 
@@ -92,7 +94,17 @@ public class DayStudentDataDialogController {
         }
 
         try {
+
+//            Moj wlasny wyjatek
             attendance = Float.parseFloat(attendanceField.getText());
+            try{
+                if (attendance>1){
+                    throw new AttendenceOverOneException("frekwencja nie moze byc wieksza niz 1!");
+                }
+            } catch (AttendenceOverOneException e){
+                attendance = 1;
+            }
+//
 
         } catch (Exception e) {
 //          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
@@ -105,7 +117,7 @@ public class DayStudentDataDialogController {
         if (isCorrect){
             DayStudent st = new DayStudent(name, surname, pesel, age, sex, mainList.size(), index, semester, attendance);
 
-//            Przesyłamy informacje o obecnym studencie do Kontrolera odpowiedzialnego za dodawanie kursow
+//            Przesylamy informacje o obecnym studencie do Kontrolera odpowiedzialnego za dodawanie kursow
             FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentAddCoursesDataDialog.fxml"));
             Parent root = loader.load();
             StudentAddCoursesDataDialogController controller2 = loader.getController();
@@ -117,10 +129,10 @@ public class DayStudentDataDialogController {
             stage.setResizable(false);
             stage.show();
 
+            mainList.add(st);
         }
-//
-
         }
     }
+
 
 

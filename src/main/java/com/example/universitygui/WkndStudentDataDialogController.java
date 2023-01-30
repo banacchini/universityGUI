@@ -2,6 +2,8 @@ package com.example.universitygui;
 
 import People.AdministrativeEmployee;
 import People.DayStudent;
+import People.WeekendStudent;
+import fileHandlingMethods.Serialization;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.universitygui.HelloApplication.main;
 import static com.example.universitygui.HelloApplication.mainList;
 import static stageMethods.WindowCloser.closeWindow;
 
@@ -65,6 +68,7 @@ public class WkndStudentDataDialogController {
 
         try{
             age = Integer.parseInt(ageField.getText());
+            ageField.setStyle("-fx-text-fill: green");
 
         }
         catch (Exception e) {
@@ -103,7 +107,7 @@ public class WkndStudentDataDialogController {
 //        Jesli input uzytkownika byl prawidlowy, to dodajemy studenta z pusta lista i wywolujemy funkcje odpowiedzialna
 //        za dodawanie kursow
         if (isCorrect){
-            DayStudent st = new DayStudent(name, surname, pesel, age, sex, mainList.size(), index, semester, tuition);
+            WeekendStudent st = new WeekendStudent(name, surname, pesel, age, sex, mainList.size(), index, semester, tuition);
 
 //            Przesyłamy informacje o obecnym studencie do Kontrolera odpowiedzialnego za dodawanie kursow
             FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentAddCoursesDataDialog.fxml"));
@@ -117,6 +121,7 @@ public class WkndStudentDataDialogController {
             stage.setResizable(false);
             stage.show();
 
+            mainList.add(st);
         }
 //
 

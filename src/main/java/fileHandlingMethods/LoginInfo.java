@@ -1,30 +1,26 @@
 package fileHandlingMethods;
 
-
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
 public class LoginInfo {
-    BufferedReader reader;
+    public static HashMap<String, String> getLoginInfo() throws IOException {
+        HashMap<String, String> loginInfo = new HashMap<String, String>();
 
-    public void  getLoginData(){
-        HashMap<String,String> loginData = new HashMap<String, String>();
-        String [] adminData;
-        try{
-            reader = new BufferedReader(new FileReader(new File("administratorzy.txt")));
-            String line = reader.readLine();
+        BufferedReader reader = new BufferedReader(new FileReader("administratorzy.txt"));
+        String line = reader.readLine();
 
-            while(line != null){
-//                adminData = line.split(",");
-//                loginData.put(adminData[0], adminData[1]);
-                line = reader.readLine();
-            }
-        } catch (IOException e){
-            e.printStackTrace();
+        while (line != null){
+            String[] user = line.split(",");
+            loginInfo.put(user[0],user[1]);
+            line = reader.readLine();
         }
-//        return getLoginData();
+
+        reader.close();
+
+        return loginInfo;
     }
 }

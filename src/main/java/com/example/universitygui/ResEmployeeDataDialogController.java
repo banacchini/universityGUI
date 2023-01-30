@@ -1,6 +1,6 @@
 package com.example.universitygui;
 
-import People.AdministrativeEmployee;
+
 import People.ResearchEmployee;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 
+import static com.example.universitygui.HelloApplication.mainList;
+import static fileHandlingMethods.Serialization.readFile;
+import static fileHandlingMethods.Serialization.saveFile;
 import static stageMethods.WindowCloser.closeWindow;
 
 public class ResEmployeeDataDialogController {
@@ -87,7 +90,7 @@ public class ResEmployeeDataDialogController {
 
 //        Jesli input uzytkownika byl prawidlowy, to dodajemy pracownika administracyjnego i zamykamy okno
         if (isCorrect){
-            HelloApplication.mainList.add(new ResearchEmployee(name, surname, pesel, age, sex, HelloApplication.mainList.size(), position, baseWage, publications));
+            mainList.add(new ResearchEmployee(name, surname, pesel, age, sex, mainList.size(), position, baseWage, publications));
 
             closeWindow(okBtn);
         }

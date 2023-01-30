@@ -5,4 +5,5 @@ module com.example.universitygui {
 
     opens com.example.universitygui to javafx.fxml;
     exports com.example.universitygui;
+
 }

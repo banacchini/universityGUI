@@ -1,8 +1,0 @@
-module universityGUI {
-
-    --add-modules
-      org.junit.jupiter.api
-
-    --add-reads
-      com.example.universityGUI=org.junit.jupiter.api
-}

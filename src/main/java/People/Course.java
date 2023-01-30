@@ -11,7 +11,7 @@ public class Course implements Serializable {
     private float grade;
 
 
-//    Constructor
+//    Konstruktor
 
     public Course(String name, String teacher, int ECTS, float grade) {
         this.name = name;
@@ -21,7 +21,7 @@ public class Course implements Serializable {
     }
 //    ______________________________________________________________________________
 
-//    Getters and setters
+//    Gettery i settery
     public String getName() {
         return name;
     }

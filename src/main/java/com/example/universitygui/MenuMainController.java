@@ -1,6 +1,8 @@
 package com.example.universitygui;
 
 import People.Person;
+import fileHandlingMethods.Serialization;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,58 +16,37 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static com.example.universitygui.HelloApplication.mainList;
+import static filteringMethods.filteringMethods.*;
 
 
 public class MenuMainController implements Initializable {
 
-    @FXML
-    private Button btnAdd;
 
     @FXML
-    private Button btnDelete;
-
-    @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnShowAll;
-
-    @FXML
-    private Button btnShowEmployees;
-
-    @FXML
-    private Button btnShowStudents;
-
-    @FXML
-    private ListView<Person> displayedList;
-
-    @FXML
-    private Menu plikMenu;
-
-    @FXML
-    private MenuItem saveMenuItem;
-
-    @FXML
-    private MenuItem showScholarshipMenuItem;
+    public ListView<Person> displayedList;
 
     @FXML
     void btnShowAllClicked(MouseEvent event) {
-
+        show(mainList);
     }
 
     @FXML
     void btnShowEmployees(MouseEvent event) {
-
+        show(getEmployeesList(mainList));
     }
 
     @FXML
     void btnShowStudentsClicked(MouseEvent event) {
-
+        show(getStudentsList(mainList));
     }
 
-// Functions of buttons responsible for adding, deleting or editing the list
+//
     @FXML
     void addBtnClicked(MouseEvent event) {
         try{
@@ -85,30 +66,46 @@ public class MenuMainController implements Initializable {
 
     @FXML
     void deleteBtnClicked(MouseEvent event) {
+        Person p = displayedList.getSelectionModel().getSelectedItem();
+        mainList.remove(p);
+        show(mainList);
 
     }
 
     @FXML
-    void editBtnClicked(MouseEvent event) {
-
+    void editBtnClicked(MouseEvent event) throws IOException {
+        Person p = displayedList.getSelectionModel().getSelectedItem();
+        if (p != null) {
+            p.edit();
+        }
     }
 //
 
 //    Menu functions
     @FXML
     void saveMenuItemClicked(ActionEvent event) {
-
+        Serialization.saveFile(mainList);
     }
 
     @FXML
     void showScholarshipMenuItemClicked(ActionEvent event) {
-
+        show(getScholarshipList(mainList));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        displayedList.getItems().setAll(HelloApplication.mainList);
+        if (mainList != null) {
+            displayedList.getItems().setAll(mainList);
+        }
+        else {
+            displayedList.getItems().setAll(new ArrayList<Person>());
+        }
     }
+
+    private void show(ArrayList<Person> list){
+        displayedList.getItems().setAll(list);
+    }
+
 //
 
 }

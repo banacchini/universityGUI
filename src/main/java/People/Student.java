@@ -1,11 +1,16 @@
 package People;
 
+import scholarshipStrategy.CheckScholarship;
+
 import java.util.ArrayList;
 
 public abstract class Student extends Person{
     private ArrayList<Course> coursesList;
     private int index;
     private int semester;
+
+    private CheckScholarship checker;
+    private float GPA;
 
 //    Konstruktory, jeden z utworzona wczesniej lista kursow, drugi tworzy pusta liste kursow i przypisuje ja studentowi
 
@@ -14,6 +19,7 @@ public abstract class Student extends Person{
         this.coursesList = coursesList;
         this.index = index;
         this.semester = semester;
+        calculateGPA();
     }
 
     public Student(String name, String surname, String PESEL, int age, String sex, int nr, int index, int semester) {
@@ -50,19 +56,57 @@ public abstract class Student extends Person{
     public void setSemester(int semester) {
         this.semester = semester;
     }
+
+    public float getGPA(){
+        return GPA;
+    }
+
+    public void setGPA(float GPA){
+        this.GPA = GPA;
+    }
+
+    public void setChecker(CheckScholarship checker){
+        this.checker = checker;
+    }
+
+    public boolean checkScholarship(){
+        return checker.check(this);
+    }
+
+    public float calculateGPA(){
+        float gpa;
+        if (coursesList == null || coursesList.size()==0){
+            gpa = 0;
+        }
+        else {
+            int sum = 0;
+            int weight = 0;
+
+            for (Course c : coursesList){
+                sum += c.getECTS() * c.getGrade();
+                weight += c.getECTS();
+            }
+
+            gpa = sum/weight;
+        }
+        setGPA(gpa);
+        return gpa;
+    }
 //  ______________________________________________________________________________
 
-//    coursesList edditing methods
+//   metody edycji listy kursow
     public void addCourse(Course c){
         coursesList.add(c);
+        calculateGPA();
     }
 
-    public void deleteCourse(int i){
-        coursesList.remove(i);
+    public void deleteCourse(Course c){
+        coursesList.remove(c);
+        calculateGPA();
     }
 //  ______________________________________________________________________________
 
-//  printing methods
+//
     public String printCourses() {
         String courses = "[";
 
@@ -102,6 +146,27 @@ public abstract class Student extends Person{
         return 0;
     }
 
+    public String getPosition(){return ""; }
+
+    @Override
+    public void setBaseWage(int baseWage) {
+
+    }
+
+    @Override
+    public void setNumberOfPublications(int numberOfPublications) {
+
+    }
+
+    @Override
+    public void setOvertime(float overtime) {
+
+    }
+
+    @Override
+    public void setPosition(String position) {
+
+    }
     //   ______________________________________________________________________________
 
 

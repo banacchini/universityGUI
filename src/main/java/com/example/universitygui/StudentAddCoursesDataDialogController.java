@@ -2,11 +2,13 @@ package com.example.universitygui;
 
 import People.Course;
 import People.Student;
+import fileHandlingMethods.Serialization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import static com.example.universitygui.HelloApplication.mainList;
 import static stageMethods.WindowCloser.closeWindow;
 
 public class StudentAddCoursesDataDialogController {
@@ -47,7 +49,7 @@ public class StudentAddCoursesDataDialogController {
 
         try{
             ects = Integer.parseInt(ectsField.getText());
-
+            ectsField.setStyle("-fx-text-fill: green");
         } catch (Exception e){
             isCorrect = false;
             ectsField.setStyle("-fx-text-fill: red");
@@ -55,7 +57,7 @@ public class StudentAddCoursesDataDialogController {
 
         try{
             grade = Float.parseFloat(gradeField.getText());
-
+            gradeField.setStyle("-fx-text-fill: green");
         } catch (Exception e){
             isCorrect = false;
             gradeField.setStyle("-fx-text-fill: red");
@@ -64,10 +66,10 @@ public class StudentAddCoursesDataDialogController {
         if (isCorrect){
             st.addCourse(new Course(name, teacher, ects, grade));
 
-            nameField.setStyle("-fx-text-fill: green");
-            ectsField.setStyle("-fx-text-fill: green");
-            teacherField.setStyle("-fx-text-fill: green");
-            gradeField.setStyle("-fx-text-fill: green");
+            nameField.setText("");
+            ectsField.setText("");
+            teacherField.setText("");
+            gradeField.setText("");
 
         }
     }
@@ -75,6 +77,7 @@ public class StudentAddCoursesDataDialogController {
     @FXML
     void okBtnClicked(MouseEvent event) {
         closeWindow(okBtn);
+
     }
 
 

@@ -1,63 +1,63 @@
 package com.example.universitygui;
 
-
-import fileHandlingMethods.LoginInfo;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.net.URL;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 
-public class LoginController implements Initializable{
-    HashMap<String,String> loginData;
+import static fileHandlingMethods.LoginInfo.getLoginInfo;
+import static stageMethods.WindowCloser.closeWindow;
+
+public class LoginController {
+
     @FXML
     private TextField LoginField;
-    @FXML
-    private PasswordField PasswordField;
+
     @FXML
     private Label LoginMessageLabel;
+
     @FXML
-    protected void checkLoginAndPassword(){
-        boolean loggedIn = false;
+    private PasswordField PasswordField;
 
-        String loginText = LoginField.getText();
-        String passwordText = PasswordField.getText();
+    @FXML
+    private Button okBtn;
 
-        try{
-            if(!loginData.containsKey(loginText)){
-                throw new LoginNotFoundException("Nie znaleziono loginu!");
-            }
-            else{
-                if (passwordText.equals(loginData.get(loginText))) {
-                    loggedIn = true;
-                } else {
-                    LoginMessageLabel.setText("Podano zle haslo!");
-                }
-            }
-        } catch (LoginNotFoundException e){
-            LoginMessageLabel.setText("Podaj poprawny login!");
+    @FXML
+    void checkLoginAndPassword(ActionEvent event) throws IOException {
+        boolean isLogged = false;
+
+        String login = LoginField.getText().trim();
+        String password = PasswordField.getText().trim();
+        HashMap<String, String> loginData = getLoginInfo();
+
+        if (password.equals(loginData.get(login))){
+            isLogged = true;
         }
 
-        if(loggedIn){
-            LoginMessageLabel.setText("Zalogowano");
+        if (isLogged) {
+            showMainMenu();
+            closeWindow(okBtn);
         }
-
-
-
-    }
-    public static class LoginNotFoundException extends Exception{
-        public LoginNotFoundException(String errorMessage){super(errorMessage);}
+        else{
+            LoginMessageLabel.setText("Podano bledny login lub haslo!");
+            }
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        new LoginInfo().getLoginData();
-
+    public void showMainMenu() throws IOException {
+        Stage stage= new Stage();
+        FXMLLoader fxmlLoader =  new FXMLLoader(HelloApplication.class.getResource("menu-main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Uniwersytet");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 }
