@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import myException.AttendenceOverOneException;
 
 import java.io.IOException;
 
@@ -92,7 +93,6 @@ public class DayStudentEditDialogController {
         stage.setResizable(false);
         stage.show();
 
-
     }
 
     @FXML
@@ -119,8 +119,20 @@ public class DayStudentEditDialogController {
 
         try{
             attendance = Float.parseFloat(attendanceField.getText());
+
+//            Moj wlasny wyjatek, jesli podana frekwencja jest wieksza niz 1 to ustawiamy ja na 1
+// _____________________________________________________________________________________________________________________
+            try{
+                if (attendance>1){
+                    throw new AttendenceOverOneException("frekwencja nie moze byc wieksza niz 1!");
+                }
+            } catch (AttendenceOverOneException e){
+                attendance = 1;
+            }
+// _____________________________________________________________________________________________________________________
+
             st.setAttendance(attendance);
-            attendanceLabel.setText(String.valueOf(attendance*100)+"%");
+            attendanceLabel.setText(attendance*100+"%");
             removeAlert();
 
         }catch (Exception e){
@@ -209,19 +221,23 @@ public class DayStudentEditDialogController {
     }
 
     public void setStudent(Person p){
-        st = (DayStudent) p;
 
-        nameLabel.setText(st.getName());
-        surnameLabel.setText(st.getSurname());
-        peselLabel.setText(st.getPESEL());
-        ageLabel.setText(String.valueOf(st.getAge()));
-        sexLabel.setText(st.getSex());
-        indexLabel.setText(String.valueOf(st.getIndex()));
-        semesterLabel.setText(String.valueOf(st.getSemester()));
-        attendanceLabel.setText(String.valueOf(st.getAttendance()*100)+"%");
+        if(p instanceof DayStudent) {
+            st = (DayStudent) p;
 
-        coursesView.getItems().setAll(st.getCoursesList());
+//        Przypisujemy labelom informacje wejsciowe o Studencie Dziennym
+            nameLabel.setText(st.getName());
+            surnameLabel.setText(st.getSurname());
+            peselLabel.setText(st.getPESEL());
+            ageLabel.setText(String.valueOf(st.getAge()));
+            sexLabel.setText(st.getSex());
+            indexLabel.setText(String.valueOf(st.getIndex()));
+            semesterLabel.setText(String.valueOf(st.getSemester()));
+            attendanceLabel.setText(st.getAttendance() * 100 + "%");
 
+//        Wyswietlamy poczatkowa liste kursow studenta
+            coursesView.getItems().setAll(st.getCoursesList());
+        }
     }
 
     public void updateCoursesView(){

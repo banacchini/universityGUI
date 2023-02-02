@@ -26,6 +26,7 @@ public class WeekendStudentEdit implements PersonEdit, Serializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
+        stage.setTitle("Edytuj dane studenta zaocznego");
         stage.show();
     }
 }

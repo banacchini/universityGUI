@@ -1,12 +1,10 @@
 package com.example.universitygui;
 
 import People.*;
-import fileHandlingMethods.LoginInfo;
+
 import fileHandlingMethods.Serialization;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

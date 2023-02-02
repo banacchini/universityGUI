@@ -9,7 +9,7 @@ public abstract class Employee extends Person {
 
     private float salary;
 
-//    Constructor
+//    Konstruktor
 
     public Employee(String name, String surname, String PESEL, int age, String sex, int nr, String position, int baseWage) {
         super(name, surname, PESEL, age, sex, nr);
@@ -19,7 +19,7 @@ public abstract class Employee extends Person {
 
 //
 
-//  Getters and Setters
+//  Gettery i Settery
     public String getPosition() {
         return position;
     }

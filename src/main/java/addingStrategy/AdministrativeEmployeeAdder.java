@@ -15,6 +15,7 @@ public class AdministrativeEmployeeAdder implements PersonAdder{
         Parent root = FXMLLoader.load(PersonTypeDialogController.class.getResource("AdmEmployeeDataDialog.fxml"));
         stage.setScene(new Scene(root));
         stage.setResizable(false);
+        stage.setTitle("Dodaj pracownika administracyjnego");
         stage.show();
     }
 }

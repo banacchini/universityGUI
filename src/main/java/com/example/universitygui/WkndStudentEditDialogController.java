@@ -210,19 +210,21 @@ public class WkndStudentEditDialogController {
     }
 
     public void setStudent(Person p){
-        st = (WeekendStudent) p;
+        if (p instanceof WeekendStudent) {
+            st = (WeekendStudent) p;
 
-        nameLabel.setText(st.getName());
-        surnameLabel.setText(st.getSurname());
-        peselLabel.setText(st.getPESEL());
-        ageLabel.setText(String.valueOf(st.getAge()));
-        sexLabel.setText(st.getSex());
-        indexLabel.setText(String.valueOf(st.getIndex()));
-        semesterLabel.setText(String.valueOf(st.getSemester()));
-        tuitionLabel.setText(String.valueOf(st.getTuition()));
+//        Przypisujemy labelom informacje wejsciowe o Studencie Zaocznym
+            nameLabel.setText(st.getName());
+            surnameLabel.setText(st.getSurname());
+            peselLabel.setText(st.getPESEL());
+            ageLabel.setText(String.valueOf(st.getAge()));
+            sexLabel.setText(st.getSex());
+            indexLabel.setText(String.valueOf(st.getIndex()));
+            semesterLabel.setText(String.valueOf(st.getSemester()));
+            tuitionLabel.setText(String.valueOf(st.getTuition()));
 
-        coursesView.getItems().setAll(st.getCoursesList());
-
+            coursesView.getItems().setAll(st.getCoursesList());
+        }
     }
 
     public void updateCoursesView(){

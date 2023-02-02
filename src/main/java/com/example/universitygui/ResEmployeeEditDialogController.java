@@ -164,6 +164,8 @@ public class ResEmployeeEditDialogController {
 
 
     public void setPerson(Person p){
+
+//        Przypisujemy labelom informacje o Pracowniku
         this.person = p;
         nameLabel.setText(p.getName());
         surnameLabel.setText(p.getSurname());

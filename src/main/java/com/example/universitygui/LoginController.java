@@ -38,10 +38,12 @@ public class LoginController {
         String password = PasswordField.getText().trim();
         HashMap<String, String> loginData = getLoginInfo();
 
+//        Sprawdzamy czy podane haslo pasuje do podanego loginu
         if (password.equals(loginData.get(login))){
             isLogged = true;
         }
 
+//        Jesli haslo i login sa poprawne to pokazujemy glowna czesc aplikacji i zamykamy okno logowania
         if (isLogged) {
             showMainMenu();
             closeWindow(okBtn);

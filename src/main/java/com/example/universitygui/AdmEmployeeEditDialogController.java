@@ -71,7 +71,7 @@ public class AdmEmployeeEditDialogController {
     @FXML
     void ageEditBtnClicked(MouseEvent event) {
         int age;
-
+//          Sprawdzamy poprawnosc wprowadzonego wieku
         try{
             age = Integer.parseInt(ageField.getText());
             person.setAge(age);
@@ -102,7 +102,7 @@ public class AdmEmployeeEditDialogController {
     @FXML
     void overtimeEditBtnClicked(MouseEvent event) {
         float overtime;
-
+//          Sprawdzamy poprawnosc wprowadzonej ilosci nadgodzin
         try{
             overtime = Float.parseFloat(overtimeField.getText());
             person.setOvertime(overtime);
@@ -150,7 +150,7 @@ public class AdmEmployeeEditDialogController {
     @FXML
     void wageEditBtnClicked(MouseEvent event) {
         int wage;
-
+//        Sprawdzamy poprawnosc stawki godzinowej
         try{
             wage = Integer.parseInt(wageField.getText());
             person.setBaseWage(wage);
@@ -165,6 +165,8 @@ public class AdmEmployeeEditDialogController {
 
     public void setPerson(Person p){
         this.person = p;
+
+//        Przypisujemy labelom wejsciowe informacje o pracowniku administracyjnym
         nameLabel.setText(p.getName());
         surnameLabel.setText(p.getSurname());
         peselLabel.setText(p.getPESEL());
@@ -175,10 +177,12 @@ public class AdmEmployeeEditDialogController {
         overtimeLabel.setText(String.valueOf(p.getOvertime()));
     }
 
+//    Wyswietlanie informacji o niepoprawnosci wprowadzonych danych
     public void alert(){
         alertField.setText("Sprawdz poprawnosc danych!");
     }
 
+//    Usuwanie informacji o niepoprawnosci wprowadzonych danych
     public void removeAlert(){
         alertField.setText("");
     }

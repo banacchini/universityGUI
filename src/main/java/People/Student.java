@@ -79,15 +79,19 @@ public abstract class Student extends Person{
             gpa = 0;
         }
         else {
-            int sum = 0;
+            float sum = 0;
             int weight = 0;
 
             for (Course c : coursesList){
                 sum += c.getECTS() * c.getGrade();
                 weight += c.getECTS();
             }
-
-            gpa = sum/weight;
+            if (weight != 0) {
+                gpa = sum / weight;
+            }
+            else{
+                gpa = 0;
+            }
         }
         setGPA(gpa);
         return gpa;
@@ -124,7 +128,7 @@ public abstract class Student extends Person{
     }
 
     public String toString(){
-        return "" + index + "," + super.toString() + ", kursy: " + printCourses() + ", semestr: " + semester;
+        return "" + index + ", " + super.toString() + ", kursy: " + printCourses() + ", semestr: " + semester;
     }
 //  ______________________________________________________________________________
 

@@ -26,6 +26,7 @@ public class ResearchEmployeeEdit implements PersonEdit, Serializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
+        stage.setTitle("Edytuj dane pracownika naukowego");
         stage.show();
     }
 }

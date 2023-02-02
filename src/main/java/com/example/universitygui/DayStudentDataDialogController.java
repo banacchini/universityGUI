@@ -65,38 +65,43 @@ public class DayStudentDataDialogController {
         String pesel = peselField.getText();
         String sex = sexField.getText();
 
+//      Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
+
+//        Sprawdzamy poprawnosc wieku
         try{
             age = Integer.parseInt(ageField.getText());
 
         }
         catch (Exception e) {
-//         Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             ageField.setStyle("-fx-text-fill: red");
             isCorrect = false;
             }
 
+//        Sprawdzamy poprawnosc indeksu
         try {
             index = Integer.parseInt(indexField.getText());
 
         } catch (Exception e){
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             indexField.setStyle("-fx-text-fill: red");
             isCorrect = false;
             }
 
+//        Sprawdzamy poprawnosc semestru
         try {
             semester = Integer.parseInt(semesterField.getText());
 
         } catch (Exception e){
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
+
             semesterField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
 
+//        Sprawdzamy poprawnosc frekwencji
         try {
-
-//            Moj wlasny wyjatek
             attendance = Float.parseFloat(attendanceField.getText());
+
+//            Moj wlasny wyjatek, jesli frekwencja jest wieksza niz 1, to ustawiamy ja na 1
+// _____________________________________________________________________________________________________________________
             try{
                 if (attendance>1){
                     throw new AttendenceOverOneException("frekwencja nie moze byc wieksza niz 1!");
@@ -104,13 +109,13 @@ public class DayStudentDataDialogController {
             } catch (AttendenceOverOneException e){
                 attendance = 1;
             }
-//
+// _____________________________________________________________________________________________________________________
 
         } catch (Exception e) {
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             attendanceField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
+
 
 //        Jesli input uzytkownika byl prawidlowy, to dodajemy studenta z pusta lista i wywolujemy funkcje odpowiedzialna
 //        za dodawanie kursow
@@ -123,6 +128,7 @@ public class DayStudentDataDialogController {
             StudentAddCoursesDataDialogController controller2 = loader.getController();
             controller2.setSt(st);
 
+//            Pokazujemy okno odpowiedzialne za dodawanie kursow
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

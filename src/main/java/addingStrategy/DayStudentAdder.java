@@ -16,6 +16,7 @@ public class DayStudentAdder implements PersonAdder{
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setTitle("Dodaj studenta dziennego");
         stage.show();
     }
 }

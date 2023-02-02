@@ -57,12 +57,13 @@ public class AdmEmployeeDataDialogController {
         String position = positionField.getText();
         String sex = sexField.getText();
 
+
+//      Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
         try{
             age = Integer.parseInt(ageField.getText());
 
         }
         catch (Exception e) {
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             ageField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
@@ -71,7 +72,6 @@ public class AdmEmployeeDataDialogController {
             baseWage = Integer.parseInt(baseWageField.getText());
 
         } catch (Exception e){
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             baseWageField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
@@ -81,12 +81,12 @@ public class AdmEmployeeDataDialogController {
             overtime = Float.parseFloat(overtimeField.getText());
 
         } catch (Exception e) {
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             overtimeField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
 
-//        Jesli input uzytkownika byl prawidlowy, to dodajemy pracownika administracyjnego i zamykamy okno
+//      Jesli input uzytkownika byl prawidlowy, to dodajemy pracownika administracyjnego i zamykamy okno
+
         if (isCorrect){
             mainList.add(new AdministrativeEmployee(name, surname, pesel, age, sex, mainList.size(), position, baseWage, overtime));
 

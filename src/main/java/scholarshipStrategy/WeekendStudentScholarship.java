@@ -13,13 +13,16 @@ public class WeekendStudentScholarship implements CheckScholarship, Serializable
     @Override
 //    Stypendium jest przyznawane studentowi zaocznemu z najwyzsza srednia ocen (remis na 1. miejscu oznacza zwyciestwo obu)
     public boolean check(Person p) {
-        for (Person another : mainList){
-            if (another.getClass() == WeekendStudent.class ){
-                if (another.getGPA()>p.getGPA()){
-                    return false;
+        if (p instanceof WeekendStudent){
+            for (Person another : mainList){
+                if (another.getClass() == WeekendStudent.class ){
+                    if (another.getGPA()>p.getGPA()){
+                        return false;
+                    }
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 }

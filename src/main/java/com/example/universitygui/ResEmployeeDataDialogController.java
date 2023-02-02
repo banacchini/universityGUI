@@ -44,7 +44,8 @@ public class ResEmployeeDataDialogController {
 
     @FXML
     void okBtnClicked(MouseEvent event) {
-        //       zmienna, ktora reprezentuje poprawnosc inputu uzytkownika
+
+//        Zmienna odpowiedzialna za poprawnosc wpisanych danych
         boolean isCorrect = true;
 
 //        poczatkowa deklaracja zmiennych, ktore moga stanowic przy wczytywaniu danych
@@ -59,31 +60,33 @@ public class ResEmployeeDataDialogController {
         String position = positionField.getText();
         String sex = sexField.getText();
 
+
+//        Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
+
+//        Sprawdzanie poprawnosci wieku
         try{
             age = Integer.parseInt(ageField.getText());
 
         }
         catch (Exception e) {
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             ageField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
 
+//        Sprawdzanie poprawnosci stawki godzinowej
         try {
             baseWage = Integer.parseInt(baseWageField.getText());
 
         } catch (Exception e){
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             baseWageField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
 
-
+//          Sprawdzanie poprawnosci liczby publikacji
         try {
             publications = Integer.parseInt(publicationsField.getText());
 
         } catch (Exception e) {
-//          Jesli wprowadzone dane sa niepoprawne, zmieniamy kolor czcionki na czerwony oraz ustawiamy isCorrect = false
             publicationsField.setStyle("-fx-text-fill: red");
             isCorrect = false;
         }
@@ -94,7 +97,6 @@ public class ResEmployeeDataDialogController {
 
             closeWindow(okBtn);
         }
-//
     }
 
 

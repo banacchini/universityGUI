@@ -12,12 +12,14 @@ public class DayStudentScholarship implements CheckScholarship, Serializable {
     @Override
 //    Stypendium jest przyznawane wszystkim studentom dziennym z frekwencja powyzej 90% oraz srednia ocen co najmniej 4.5
     public boolean check(Person p) {
-        DayStudent st = (DayStudent) p;
-        if(st.getAttendance()>0.9 && st.getGPA()>=4.5){
-            return true;
+        if (p instanceof DayStudent) {
+            DayStudent st = (DayStudent) p;
+            if (st.getAttendance() > 0.9 && st.getGPA() >= 4.5) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        else{
-            return false;
-        }
+        return false;
     }
 }
